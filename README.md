@@ -39,7 +39,7 @@ Task List is a user-made (i.e., very unofficial) setup for Inky Frame which sync
         ```
         deactivate
         ```
-     5. Run the `flyctl launch` command to create your unique `fly.toml` file, linking the app to your Fly.io account
+     5. Run the `% flyctl launch` command to create your unique `fly.toml` file, linking the app to your Fly.io account
         - **App Name**: I left mine default, but you can pick anything unique
         - **Organization**: Personal
         - **Region**: Pick the closest one for you
@@ -48,7 +48,7 @@ Task List is a user-made (i.e., very unofficial) setup for Inky Frame which sync
         ```
         web: uvicorn main:app --host 0.0.0.0 --port $PORT
         ```
-     7. Run the command `flyctl deploy` and watch the magic happen
+     7. Run the command `% flyctl deploy` and watch the magic happen
   4. **Check App Status** (You can return to the documentation again.)
      - **Take note of the hostname**; this is the domain for the URL you will use for your API endpoints.	
   5. **Visit App**
@@ -72,7 +72,7 @@ Task List is a user-made (i.e., very unofficial) setup for Inky Frame which sync
 
 ### 5. Install Thonny
 ```
-pip3 install thonny
+% pip3 install thonny
 ```
 
 ### 6. Connect to Inky Frame
