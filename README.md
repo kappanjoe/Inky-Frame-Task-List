@@ -79,10 +79,11 @@ pip3 install thonny
 - I recommend skimming over Pimoroni's [Getting Started with Inky Frame](https://learn.pimoroni.com/article/getting-started-with-inky-frame) doc if you aren't already familiar with using your Inky Frame.
 
 ### 7. Use Thonny to upload all the files within [`pico-image`](/pico-image) to Inky Frame
+- The root of Inky Frame should now match the inside of `pico-image`.
 
 ### 8. Unplug Inky Frame and turn on the battery!
-- Inky Frame will download the latest version of your tasks from your API endpoint, and go to sleep for roughly 30 minutes before looping over the process again.
-- Each time you turn on the battery, you will need to wake Inky Frame up once by pressing a button on the front (the activity light will turn on when awake). After the script runs once, it will automatically sleep and wake every 30 minutes until the battery is turned off.
+- When `main.py` runs, Inky Frame will download the latest version of your tasks from your API endpoint, and go to sleep for roughly 30 minutes before looping over the process again.
+- Each time you turn on the battery, you will need to wake Inky Frame up once by pressing a button on the front (the activity light will turn on when awake). After the script runs once, it will then automatically sleep and wake every 30 minutes until the battery is turned off.
 - The cycle time can be adjusted up to 255 minutes by editing the value of `UPDATE_INTERVAL` in [`pico-image/main.py`](pico-image/main.py).
 
 ## Changelog
