@@ -87,6 +87,10 @@ Task List is a user-made (i.e., very unofficial) setup for Inky Frame which sync
 
 ## Changelog
 
+### v0.6
+
+- Add Launch Agent to run shortcut on an interval
+
 ### v0.5
 
 - Remove Automator app
