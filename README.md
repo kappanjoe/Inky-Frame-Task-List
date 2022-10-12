@@ -12,7 +12,7 @@ Task List is a user-made (i.e., very unofficial) setup for Inky Frame which sync
 
 ## How to Install
 
-### 1. Get your endpoint up and running (Fly.io Instructions)
+### 1. Get your API endpoint up and running (Fly.io Instructions)
 - Follow along with the [official Get Started documentation](https://fly.io/docs/hands-on/)
   1. **Install flyctl**
   2. **Sign up or Sign in**
