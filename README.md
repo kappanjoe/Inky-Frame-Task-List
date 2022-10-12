@@ -1,5 +1,5 @@
 # Task List for [Inky Frame](https://shop.pimoroni.com/products/inky-frame-5-7)
-Task List is a user-made (i.e., very unofficial) setup for Inky Frame which syncs your Today list from Things 3 on Mac to the Inky Frame through the internet. It can also be configured to use a local server or even potentially ad-hoc but I'll leave that to you, dear user. ;) Most of the code was written in Python. The setup currently also uses Shortcuts to simplify the Mac side of things.
+Task List is a user-made (i.e., very unofficial) setup for Inky Frame which syncs your Today list from Things 3 on Mac to the Inky Frame through the internet. Adept users should be able to easliy customize it to run adhoc or on a local server. On the Mac side, a Launch Agent runs a Shortcut  on a 30 min. interval to grab the task list from Things 3 and upload the data to an API Endpoint (with authorization). On the Inky Frame side, the unit calls the same API endpoint (with auth.) on a 30 min. interval to download the most recent version of the tasks.
 
 ## Necessary Tools
 
@@ -59,9 +59,8 @@ Task List is a user-made (i.e., very unofficial) setup for Inky Frame which sync
 - Input your API URL and add the API Key to the headers as prompted. The correct URL is the new hostname created for your Fly.io app, appending `/tasks` to the end (it should look something like `https://app-name.fly.dev/tasks`).
 - You may need to grant permissions to use scripts/AppleScript the first time you run the shortcut. "Always Allow" to avoid the prompt every single time the shortcut runs.
 
-### 3. ~~Install the Automator App~~
-- ~~Drag the application to the "Applications" folder on your Mac. Open the app. (You may need to hold down `option` while opening to grant permission as the code is not signed.)~~
-- **The app is [broken](https://github.com/kappanjoe/Inky-Frame-Task-List/issues/1) and has been removed.** I will update the repository once I've found another solution, but for now, you will need to run the shortcut manually when you want to send updates to the API endpoint.
+### 3. Install the Launch Agent
+- Save the .plist `com.kappanjoe.tasklist.uploadagent` to your user Library in the directory `~/Library/LaunchAgents`, then logout. After login, the Launch Agent will run the previously installed shortcut every 1800 seconds (30 min.) or so. If you change the shortcut name to anything other than "Upload Task List to Cloud", make sure you edit the corresponding string inside the .plist to match.
 
 ### 4. Edit `WIFI_CONFIG.py` and `secrets.py`
 - Similar to what we did with the Fly.io deployment, make a copy of [`secrets_template.py`](/secrets_template.py) named `secrets.py`, **as well as** [`WIFI_CONFIG_template.py`](/secrets_template.py) (named `WIFI_CONFIG.py`), saving both in [`pico-image`](/pico-image).
