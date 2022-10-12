@@ -3,3 +3,5 @@ venv
 db.json
 secrets.py
 WIFI_CONFIG.py
+fly.toml
+tinyweb
