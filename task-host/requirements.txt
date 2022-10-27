@@ -1,3 +1,7 @@
 fastapi[all]>=0.75
 uvicorn[standard]>=0.15
 pydantic
+Pillow
+
+# For static images
+aiofiles

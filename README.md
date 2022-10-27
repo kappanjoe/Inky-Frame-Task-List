@@ -12,12 +12,17 @@ Task List is a user-made (i.e., very unofficial) setup for Inky Frame which sync
 
 ## How to Install
 
-### 1. Get your API endpoint up and running (Fly.io Instructions)
+### 1. Get your API up and running (Fly.io Instructions)
 - Follow along with the [official Get Started documentation](https://fly.io/docs/hands-on/)
   1. **Install flyctl**
   2. **Sign up or Sign in**
-  3. **Deploy Python App** (This part differs from the documentation; most notably, we won't use Docker.)
-     1. Make a copy of [`secrets_template.py`](/secrets_template.py) named `secrets.py` and save it in [`task-host`](/task-host), replacing `"YOUR API KEY"` with a secret API key of your choosing (keep the quotation marks). (You can ignore the URL method until we install on Inky Frame.)
+  3. **Deploy API** (This part differs from the standard documentation; most notably, we won't use Docker.)
+     1. Set up your files:
+        1. Make a copy of [`secrets_template.py`](/secrets_template.py) named `secrets.py` and save it in [`task-host`](/task-host).
+        2. Replace `"YOUR API KEY"` in `secrets.py` with a secret API key of your choosing (keep the quotation marks).
+        - **IMPORTANT**: Authorization has been removed for getting an image of the tasks. API Key is required only for posting new tasks and getting tasks in JSON format.
+        3. Save a font file of your choice within `task-host`. (TrueType, OpenType, and other file types readable by the [FreeType library](https://freetype.org) are supported.)
+        4. In [`task-host/main.py`](/task-host/main.py), replace `"SF-Pro-Text-Medium.otf"` with the filename of the font you included.
      2. Next, we need to set up a python virtual environment:
         1. In the [`task-host`](/task-host) folder, create the virtual environment by running:
            ```
@@ -49,9 +54,9 @@ Task List is a user-made (i.e., very unofficial) setup for Inky Frame which sync
         web: uvicorn main:app --host 0.0.0.0 --port $PORT
         ```
      7. Run the command `% flyctl deploy` and watch the magic happen
-  4. **Check App Status** (You can return to the documentation again.)
+  4. **Check API Status** (You can return to the documentation again.)
      - **Take note of the hostname**; this is the domain for the URL you will use for your API endpoints.	
-  5. **Visit App**
+  5. **Visit API**
      - If you visit the base level domain directly, your browser should display a single line of text; "Nothing to see here."
 
 ### 2. Install the Shortcut
@@ -62,12 +67,12 @@ Task List is a user-made (i.e., very unofficial) setup for Inky Frame which sync
 ### 3. Install the Launch Agent
 - Save the .plist `com.kappanjoe.tasklist.uploadagent` to your user Library in the directory `~/Library/LaunchAgents`, then logout. After login, the Launch Agent will run the previously installed shortcut every 1800 seconds (30 min.) or so. If you change the shortcut name to anything other than "Upload Task List to Cloud", make sure you edit the corresponding string inside the .plist to match.
 
-### 4. Edit `WIFI_CONFIG.py` and `secrets.py`
-- Similar to what we did with the Fly.io deployment, make a copy of [`secrets_template.py`](/secrets_template.py) named `secrets.py`, **as well as** [`WIFI_CONFIG_template.py`](/secrets_template.py) (named `WIFI_CONFIG.py`), saving both in [`pico-image`](/pico-image).
-- In the new `secrets.py`, replace `"YOUR API KEY"` with the same secret API key as before. Replace `"YOUR API URL"` with the same URL as you used to import the shortcut.
+### 4. Edit `WIFI_CONFIG.py` & ENDPOINT URL
+- Make a copy of [`WIFI_CONFIG_template.py`](/WIFI_CONFIG_template.py) named `WIFI_CONFIG.py` and save it in [`pico-image`](/pico-image).
 - Replace the SSID and PSK values in `WIFI_CONFIG.py` with the network name and password you want your Inky Frame to use to connect wirelessly.
 - Replace the COUNTRY value with the two-letter country code for your country [(look it up here)](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). This is required to ensure Inky Frame uses the correct networking protocols which can differ country to country... or something like that.
-- Don't forget to keep quotation marks surrounding each of the edited values! They need to be read as strings.
+- Don't forget to keep quotation marks!
+- Replace "YOURHOSTNAME" in [`pico-image/main.py`](/pico-image/main.py) with the host name of the new API you set up in Step 1.
 
 ### 5. Install Thonny
 ```
@@ -86,6 +91,11 @@ Task List is a user-made (i.e., very unofficial) setup for Inky Frame which sync
 - The cycle time can be adjusted up to 255 minutes by editing the value of `UPDATE_INTERVAL` in [`pico-image/main.py`](pico-image/main.py).
 
 ## Changelog
+
+### v0.7
+
+- Convert API to image-based flow
+- Clean up source code
 
 ### v0.6
 

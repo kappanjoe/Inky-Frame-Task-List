@@ -1,7 +1,14 @@
+# macOS
 .DS_Store
+
+# Virtual env/Build files
 venv
+tinyweb
+*.afdesign
+
+# Private use
 db.json
 secrets.py
 WIFI_CONFIG.py
 fly.toml
-tinyweb
+*.otf
