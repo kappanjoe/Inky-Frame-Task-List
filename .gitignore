@@ -12,3 +12,4 @@ secrets.py
 WIFI_CONFIG.py
 fly.toml
 *.otf
+**/images/private

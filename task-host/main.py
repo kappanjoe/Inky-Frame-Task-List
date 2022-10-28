@@ -71,7 +71,7 @@ async def put_tasks(data: TaskWrapper, api_key: APIKey = Depends(get_api_key)):
         draw = ImageDraw.Draw(img)
 
         ##### Replace "SF-Pro-Text-Medium.otf" with the filename of a font you choose to upload #####
-        font = ImageFont.truetype("SF-Pro-Text-Medium.otf", 16)
+        font = ImageFont.truetype("SF-Pro-Text-Medium.otf", 19)
         ##### ----- ----- ----- ----- ----- ----- --------- ----- ----- ----- ----- ----- ----- #####
 
         y = 109
@@ -80,10 +80,10 @@ async def put_tasks(data: TaskWrapper, api_key: APIKey = Depends(get_api_key)):
                 cbox = Image.open('images/open_task.png').convert("RGBA")
             else:
                 cbox = Image.open('images/complete_task.png').convert("RGBA")
-            img.alpha_composite(cbox, dest=(72, y + 3))
+            img.alpha_composite(cbox, dest=(70, y + 3))
             cbox.close()
-            draw.text((100, y), item["name"], font=font, fill=(0, 0, 0, 255))
-            y += 23
+            draw.text((96, y), item["name"], font=font, fill=(0, 0, 0, 255))
+            y += 31
             if y > 384:
                 break
         img = img.convert("RGB")
