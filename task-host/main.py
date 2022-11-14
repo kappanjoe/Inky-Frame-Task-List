@@ -2,6 +2,7 @@ from typing import List
 
 import logging
 import json
+import random
 
 from fastapi import FastAPI, Security, Depends, HTTPException
 from fastapi.security.api_key import APIKeyHeader, APIKey
@@ -66,8 +67,10 @@ async def put_tasks(data: TaskWrapper, api_key: APIKey = Depends(get_api_key)):
         file.close()
         logger.info(f"Data saved.")
 
+    randomImg = random.choice([1, 2])
+
     logger.info(f"Generating image.")
-    with Image.open('images/background.png').convert("RGBA") as img:
+    with Image.open(f'images/background{randomImg}.png').convert("RGBA") as img:
         draw = ImageDraw.Draw(img)
 
         ##### Replace "SF-Pro-Text-Medium.otf" with the filename of a font you choose to upload #####

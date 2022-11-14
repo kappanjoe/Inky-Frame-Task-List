@@ -20,7 +20,7 @@ Task List is a user-made (i.e., very unofficial) setup for Inky Frame which sync
      1. Set up your files:
         1. Make a copy of [`secrets_template.py`](/secrets_template.py) named `secrets.py` and save it in [`task-host`](/task-host).
         2. Replace `"YOUR API KEY"` in `secrets.py` with a secret API key of your choosing (keep the quotation marks).
-        - **IMPORTANT**: Authorization has been removed for getting an image of the tasks. API Key is required only for posting new tasks and getting tasks in JSON format.
+        - **IMPORTANT**: Authorization has been removed for getting tasks in image form. API Key is required only for posting new tasks and getting tasks in JSON format. [Click here](https://github.com/kappanjoe/Inky-Frame-Task-List/tree/a089553df54437dbd3523132bd8fce13a7e81834) for text-based version with key-protected endpoints.
         3. Save a font file of your choice within `task-host`. (TrueType, OpenType, and other file types readable by the [FreeType library](https://freetype.org) are supported.)
         4. In [`task-host/main.py`](/task-host/main.py), replace `"SF-Pro-Text-Medium.otf"` with the filename of the font you included.
      2. Next, we need to set up a python virtual environment:
@@ -91,6 +91,11 @@ Task List is a user-made (i.e., very unofficial) setup for Inky Frame which sync
 - The cycle time can be adjusted up to 255 minutes by editing the value of `UPDATE_INTERVAL` in [`pico-image/main.py`](pico-image/main.py).
 
 ## Changelog
+
+### v0.9
+
+- Adjusted colors to reduce dithering from 3-bit palette rendering
+- [3-bit palette color reference](https://github.com/pimoroni/pimoroni-pico/blob/6ebf1a97f870ba49f1ea5b4505a6238757d8eb05/libraries/pico_graphics/pico_graphics.hpp#L308-L315)
 
 ### v0.8
 
